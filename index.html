@@ -153,9 +153,14 @@
 
   /* section */
   section.part { padding-top: 2.6rem; }
-  .part-head { position: relative; display: flex; align-items: center; gap: .85rem; margin: 2.7rem 0 .3rem; padding-top: 1.7rem; border-top: 1px solid var(--border); }
+  .part-head { position: relative; display: flex; align-items: center; flex-wrap: wrap; gap: .85rem; margin: 2.7rem 0 .3rem; padding-top: 1.7rem; border-top: 1px solid var(--border); }
   .part-head::before { content: ""; position: absolute; top: -1px; left: 0; width: 3.25rem; height: 2px; background: linear-gradient(90deg, var(--accent), transparent); }
   .part-num { font-family: "SFMono-Regular", "SF Mono", ui-monospace, Menlo, monospace; font-variant-numeric: tabular-nums; font-size: .78rem; font-weight: 700; letter-spacing: .06em; color: var(--accent-ink); background: var(--accent-soft); border: 1px solid color-mix(in srgb, var(--accent) 24%, transparent); padding: .16rem .5rem; border-radius: 7px; }
+  .src-links { margin-left: auto; display: inline-flex; flex-wrap: wrap; gap: .35rem; justify-content: flex-end; }
+  .src-link { font-size: .72rem; font-weight: 600; color: var(--accent); text-decoration: none; border: 1px solid color-mix(in srgb, var(--accent) 28%, transparent); padding: .17rem .52rem; border-radius: 999px; white-space: nowrap; display: inline-flex; align-items: center; gap: .22rem; background: var(--surface); transition: background .12s ease, border-color .12s ease; }
+  .src-link::after { content: "\2197"; font-size: .92em; opacity: .75; }
+  .src-link:hover { background: var(--accent-soft); border-color: var(--accent); }
+  .src-link:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
   h2 { font-size: 1.62rem; letter-spacing: -.02em; margin: 0; font-weight: 780; text-wrap: balance; }
   h3 { font-size: 1.12rem; letter-spacing: -.01em; margin: 2.1rem 0 .55rem; font-weight: 700; scroll-margin-top: 1rem; }
   h3 .dot { color: var(--accent); margin-right: .1rem; }
@@ -350,7 +355,7 @@
 
       <!-- ===================== 00 개요 ===================== -->
       <section class="part" id="intro">
-        <div class="part-head"><span class="part-num">00</span><h2>Orca란 무엇인가</h2></div>
+        <div class="part-head"><span class="part-num">00</span><h2>Orca란 무엇인가</h2><span class="src-links"><a class="src-link" href="https://www.onorca.dev/docs" target="_blank" rel="noopener">원문</a></span></div>
         <p>Orca는 <strong>이미 쓰고 있는 CLI 에이전트들을 운영하는 IDE</strong>입니다. 새로운 AI 모델도, git 대체품도, 클라우드 전용 플랫폼도 아닙니다. 실제 <code>git worktree</code>를 쓰고 로컬에서 돌아가며, 필요할 때만 SSH로 원격 실행을 붙입니다.</p>
         <ul class="pts">
           <li>작업마다 <strong>독립된 worktree · 에이전트 터미널 · 브라우저 탭</strong>이 격리되어, 브랜치를 갈아끼우는 저글링 없이 병렬 작업이 가능합니다.</li>
@@ -365,7 +370,7 @@
 
       <!-- ===================== 00 개념 ===================== -->
       <section class="part" id="concepts">
-        <div class="part-head"><span class="part-num">00</span><h2>먼저 잡고 갈 3가지 핵심 개념</h2></div>
+        <div class="part-head"><span class="part-num">00</span><h2>먼저 잡고 갈 3가지 핵심 개념</h2><span class="src-links"><a class="src-link" href="https://www.onorca.dev/docs/first-session" target="_blank" rel="noopener">원문</a></span></div>
         <div class="grid2">
           <div class="mini"><h4><span class="n">1</span>Worktree</h4><p>하나의 작업(기능/버그)에 대응하는 <strong>격리된 git 작업공간</strong>. 디스크에 저장소 사본이 따로 생겨, 병렬 에이전트가 파일 충돌 없이 안전하게 일합니다.</p></div>
           <div class="mini"><h4><span class="n">2</span>Agent (session)</h4><p>하나의 worktree 안, 하나의 터미널에서 도는 <strong>하나의 CLI 에이전트</strong>. Orca가 실행·유휴·종료 등 생명주기를 모니터링합니다.</p></div>
@@ -379,7 +384,7 @@
 
       <!-- ===================== 01 설치 ===================== -->
       <section class="part" id="install">
-        <div class="part-head"><span class="part-num">01</span><h2>설치 &amp; 업데이트</h2></div>
+        <div class="part-head"><span class="part-num">01</span><h2>설치 &amp; 업데이트</h2><span class="src-links"><a class="src-link" href="https://www.onorca.dev/docs/install" target="_blank" rel="noopener">원문</a></span></div>
         <ul class="pts">
           <li>배포 방식: <strong>직접 다운로드 · Homebrew · GitHub Releases</strong>. macOS/Windows/Linux 데스크톱 앱.</li>
           <li>업데이트 채널은 검증된 <strong>Stable</strong> 과 매일 갱신되는 <strong>RC(release candidate)</strong> 로 나뉩니다. 데이터 손실 없이 다운그레이드도 가능.</li>
@@ -395,7 +400,7 @@ brew upgrade --cask orca</code></pre>
 
       <!-- ===================== 01 첫 세션 ===================== -->
       <section class="part" id="first-session">
-        <div class="part-head"><span class="part-num">01</span><h2>첫 3-에이전트 세션</h2></div>
+        <div class="part-head"><span class="part-num">01</span><h2>첫 3-에이전트 세션</h2><span class="src-links"><a class="src-link" href="https://www.onorca.dev/docs/first-session" target="_blank" rel="noopener">원문</a></span></div>
         <p>Orca의 기본 흐름을 한 번에 체득하는 실습입니다.</p>
         <dl class="kv">
           <dt>1. Repo 추가</dt><dd>사이드바에서 로컬 저장소를 추가합니다.</dd>
@@ -412,7 +417,7 @@ brew upgrade --cask orca</code></pre>
 
       <!-- ===================== 02 worktrees ===================== -->
       <section class="part" id="worktrees">
-        <div class="part-head"><span class="part-num">02</span><h2>Worktree</h2></div>
+        <div class="part-head"><span class="part-num">02</span><h2>Worktree</h2><span class="src-links"><a class="src-link" href="https://www.onorca.dev/docs/model/worktrees" target="_blank" rel="noopener">원문</a></span></div>
         <p>Orca는 <strong>worktree-native 아키텍처</strong>입니다. 각 작업이 실제 <code>git worktree</code>로 디스크에 별도 사본을 가져, 병렬 에이전트가 서로의 파일을 건드리지 않습니다. 모든 worktree는 표준 git 명령과 그대로 호환됩니다.</p>
         <ul class="pts">
           <li><strong>모델</strong>: repo는 base ref(보통 <code>origin/main</code>)를 갖고, 각 worktree는 start-from ref에서 분기해 독립된 브랜치·파일·에이전트 터미널을 유지합니다.</li>
@@ -433,7 +438,7 @@ brew upgrade --cask orca</code></pre>
 
       <!-- ===================== 02 tabs ===================== -->
       <section class="part" id="tabs">
-        <div class="part-head"><span class="part-num">02</span><h2>탭 · 페인 · 분할</h2></div>
+        <div class="part-head"><span class="part-num">02</span><h2>탭 · 페인 · 분할</h2><span class="src-links"><a class="src-link" href="https://www.onorca.dev/docs/model/tabs-panes-splits" target="_blank" rel="noopener">원문</a></span></div>
         <dl class="kv">
           <dt>Tab</dt><dd>터미널·에디터·브라우저·diff·PR 중 하나를 담는 개별 컨테이너.</dd>
           <dt>Tab Group</dt><dd>여러 탭을 묶은 모음.</dd>
@@ -460,7 +465,7 @@ brew upgrade --cask orca</code></pre>
 
       <!-- ===================== 02 agents & sessions ===================== -->
       <section class="part" id="agents-sessions">
-        <div class="part-head"><span class="part-num">02</span><h2>에이전트 &amp; 세션</h2></div>
+        <div class="part-head"><span class="part-num">02</span><h2>에이전트 &amp; 세션</h2><span class="src-links"><a class="src-link" href="https://www.onorca.dev/docs/model/agents-sessions" target="_blank" rel="noopener">원문</a></span></div>
         <p><strong>Agent session</strong> = 하나의 worktree · 하나의 터미널에서 도는 하나의 CLI 에이전트. Orca가 상태를 실시간 모니터링합니다.</p>
         <div class="call">
           <span class="lab">State Dots — 상태 점 읽는 법</span>
@@ -480,7 +485,7 @@ brew upgrade --cask orca</code></pre>
 
       <!-- ===================== 02 restore ===================== -->
       <section class="part" id="restore">
-        <div class="part-head"><span class="part-num">02</span><h2>세션 복원</h2></div>
+        <div class="part-head"><span class="part-num">02</span><h2>세션 복원</h2><span class="src-links"><a class="src-link" href="https://www.onorca.dev/docs/model/session-restore" target="_blank" rel="noopener">원문</a></span></div>
         <p>Orca를 닫았다 다시 열면 워크스페이스 상태가 자동 보존됩니다.</p>
         <div class="grid2">
           <div class="mini"><h4>✅ 복원되는 것</h4><p>열린 worktree, 중첩 split·포커스 탭 레이아웃, 백그라운드 데몬이 유지하는 <strong>실행 중 에이전트 프로세스</strong>, 터미널 scrollback, 직전 포커스 worktree·탭.</p></div>
@@ -498,7 +503,7 @@ brew upgrade --cask orca</code></pre>
 
       <!-- ===================== 02 quick open ===================== -->
       <section class="part" id="quick-open">
-        <div class="part-head"><span class="part-num">02</span><h2>Quick Open · Jump Palette</h2></div>
+        <div class="part-head"><span class="part-num">02</span><h2>Quick Open · Jump Palette</h2><span class="src-links"><a class="src-link" href="https://www.onorca.dev/docs/model/quick-open" target="_blank" rel="noopener">원문</a></span></div>
         <div class="tbl-wrap"><table>
           <thead><tr><th>단축키</th><th>기능</th></tr></thead>
           <tbody>
@@ -512,7 +517,7 @@ brew upgrade --cask orca</code></pre>
 
       <!-- ===================== 03 supported ===================== -->
       <section class="part" id="supported">
-        <div class="part-head"><span class="part-num">03</span><h2>지원 에이전트 &amp; 권한</h2></div>
+        <div class="part-head"><span class="part-num">03</span><h2>지원 에이전트 &amp; 권한</h2><span class="src-links"><a class="src-link" href="https://www.onorca.dev/docs/agents/supported" target="_blank" rel="noopener">원문</a></span></div>
         <ul class="pts">
           <li>Orca는 터미널 프로세스 런처를 통해 <strong>어떤 CLI 에이전트든</strong> 실행합니다. 사전 구성된 피커에 <strong>40개 이상</strong>의 에이전트가 있으며, 통합 깊이는 두 등급입니다.</li>
           <li><strong>Deep integration</strong>(사용량 추적·hot-swap·hooks 지원) vs <strong>Auto-setup</strong>(기본 실행 구성만).</li>
@@ -531,7 +536,7 @@ brew upgrade --cask orca</code></pre>
 
       <!-- ===================== 03 claude / codex ===================== -->
       <section class="part" id="claude-codex">
-        <div class="part-head"><span class="part-num">03</span><h2>Claude Code · Codex 통합</h2></div>
+        <div class="part-head"><span class="part-num">03</span><h2>Claude Code · Codex 통합</h2><span class="src-links"><a class="src-link" href="https://www.onorca.dev/docs/agents/claude-code" target="_blank" rel="noopener">Claude Code</a><a class="src-link" href="https://www.onorca.dev/docs/agents/codex" target="_blank" rel="noopener">Codex</a></span></div>
         <h3><span class="dot">▸</span> Claude Code</h3>
         <ul class="pts">
           <li>Anthropic의 agentic CLI가 <strong>first-class</strong>로 통합 — 계정 인식 세션 관리, 사용량 추적, 원클릭 계정 전환.</li>
@@ -551,7 +556,7 @@ npm i -g @anthropic-ai/claude-code</code></pre>
 
       <!-- ===================== 03 custom ===================== -->
       <section class="part" id="custom-agent">
-        <div class="part-head"><span class="part-num">03</span><h2>커스텀 CLI 에이전트 추가</h2></div>
+        <div class="part-head"><span class="part-num">03</span><h2>커스텀 CLI 에이전트 추가</h2><span class="src-links"><a class="src-link" href="https://www.onorca.dev/docs/agents/custom-cli" target="_blank" rel="noopener">원문</a></span></div>
         <ul class="pts">
           <li>Orca는 모든 CLI 도구를 first-class로 취급 — 커스텀 커맨드라인 도구를 인터페이스에 직접 통합합니다.</li>
           <li>등록: <em>Settings → Agents → “Add custom agent”</em> → 이름 · 바이너리 경로/커맨드 · 기본 인자(선택) · startup hook(선택) 입력.</li>
@@ -566,7 +571,7 @@ npm i -g @anthropic-ai/claude-code</code></pre>
 
       <!-- ===================== 03 hotswap ===================== -->
       <section class="part" id="hotswap">
-        <div class="part-head"><span class="part-num">03</span><h2>계정 핫스왑 (Codex · Claude)</h2></div>
+        <div class="part-head"><span class="part-num">03</span><h2>계정 핫스왑 (Codex · Claude)</h2><span class="src-links"><a class="src-link" href="https://www.onorca.dev/docs/agents/codex-hot-swap" target="_blank" rel="noopener">원문</a></span></div>
         <ul class="pts">
           <li>여러 계정 사이를 <strong>재인증·설정편집 없이</strong> 즉시 전환. 다중 계정으로 토큰 사용량을 극대화하려는 개발자용.</li>
           <li>각 계정을 터미널에서 <strong>최소 1회 로그인</strong>하면 인증이 <code>~/.codex</code>(Claude는 <code>~/.claude</code>)에 저장되고, Orca가 사용량·한도와 함께 감지된 계정을 모두 표시.</li>
@@ -582,7 +587,7 @@ npm i -g @anthropic-ai/claude-code</code></pre>
 
       <!-- ===================== 03 history / hibernate ===================== -->
       <section class="part" id="history-hibernate">
-        <div class="part-head"><span class="part-num">03</span><h2>세션 히스토리 · 하이버네이션</h2></div>
+        <div class="part-head"><span class="part-num">03</span><h2>세션 히스토리 · 하이버네이션</h2><span class="src-links"><a class="src-link" href="https://www.onorca.dev/docs/agents/session-history" target="_blank" rel="noopener">세션 히스토리</a><a class="src-link" href="https://www.onorca.dev/docs/agents/hibernation" target="_blank" rel="noopener">하이버네이션</a></span></div>
         <h3><span class="dot">▸</span> Agent Session History</h3>
         <ul class="pts">
           <li>Orca가 지원 에이전트의 <strong>온디스크 트랜스크립트</strong>를 자동으로 읽어 과거 세션을 조회·재개(resume). (Claude·Codex·Cursor·Gemini 등)</li>
@@ -603,7 +608,7 @@ cursor-agent --resume &lt;id&gt;</code></pre>
 
       <!-- ===================== 03 usage ===================== -->
       <section class="part" id="usage">
-        <div class="part-head"><span class="part-num">03</span><h2>사용량 &amp; Rate-limit 추적</h2></div>
+        <div class="part-head"><span class="part-num">03</span><h2>사용량 &amp; Rate-limit 추적</h2><span class="src-links"><a class="src-link" href="https://www.onorca.dev/docs/agents/usage-tracking" target="_blank" rel="noopener">원문</a></span></div>
         <ul class="pts">
           <li>여러 에이전트(Claude·Codex·Gemini·OpenCode·Kimi·MiniMax)의 <strong>로컬 사용량</strong>을 상태 바에 표시해 rate-limit 정체를 예방.</li>
           <li>API 호출이 아니라 <strong>디스크의 로컬 상태를 읽는</strong> 방식 — 에이전트가 자체 기록을 남길 때만 갱신됩니다.</li>
@@ -614,7 +619,7 @@ cursor-agent --resume &lt;id&gt;</code></pre>
 
       <!-- ===================== 03 hooks ===================== -->
       <section class="part" id="hooks">
-        <div class="part-head"><span class="part-num">03</span><h2>Agent Hooks &amp; Memory</h2></div>
+        <div class="part-head"><span class="part-num">03</span><h2>Agent Hooks &amp; Memory</h2><span class="src-links"><a class="src-link" href="https://www.onorca.dev/docs/agents/hooks-memory" target="_blank" rel="noopener">원문</a></span></div>
         <ul class="pts">
           <li><strong>Repo별 hooks</strong>: Orca가 <code>.claude/</code>·<code>.codex/</code> 설정을 읽어 worktree에서 에이전트 실행 시 기존 hook을 실행.</li>
           <li><strong>Worktree 셋업 hooks</strong>: 생성 직후 자동 실행 명령(예: <code>pnpm install</code>, <code>direnv allow</code>)을 <em>Settings → Repository → Hooks</em> 에서 구성.</li>
@@ -625,7 +630,7 @@ cursor-agent --resume &lt;id&gt;</code></pre>
 
       <!-- ===================== 04 diff ===================== -->
       <section class="part" id="diff">
-        <div class="part-head"><span class="part-num">04</span><h2>Diff 뷰어</h2></div>
+        <div class="part-head"><span class="part-num">04</span><h2>Diff 뷰어</h2><span class="src-links"><a class="src-link" href="https://www.onorca.dev/docs/review/diff-viewer" target="_blank" rel="noopener">원문</a></span></div>
         <p>AI가 만든 변경을 <strong>진지하게 리뷰</strong>하는 핵심 화면. staged/unstaged/untracked를 합친 <strong>combined diff</strong>를 보여주고, <code>git add -p</code>처럼 hunk·line 단위 <strong>시각적 스테이징</strong>이 됩니다.</p>
         <ul class="pts">
           <li>이미지 diff: side-by-side · swipe · onion-skin 모드. Merge conflict: 3-way 뷰로 해결.</li>
@@ -645,7 +650,7 @@ cursor-agent --resume &lt;id&gt;</code></pre>
 
       <!-- ===================== 04 annotate ===================== -->
       <section class="part" id="annotate">
-        <div class="part-head"><span class="part-num">04</span><h2>AI Diff 주석 (Annotate)</h2></div>
+        <div class="part-head"><span class="part-num">04</span><h2>AI Diff 주석 (Annotate)</h2><span class="src-links"><a class="src-link" href="https://www.onorca.dev/docs/review/annotate-ai-diff" target="_blank" rel="noopener">원문</a></span></div>
         <ul class="pts">
           <li>에이전트가 만든 변경의 diff 라인 위에 <strong>인라인 코멘트</strong>를 남기고, 여러 코멘트를 <strong>batch로 묶어 한 번에</strong> 에이전트에게 되돌려 수정 요청합니다(조각조각 X, 한 라운드로).</li>
           <li>라인에 마우스를 올리면 gutter에 “+” → 클릭 또는 <kbd>c</kbd> 로 코멘트 시작. markdown 지원, <kbd>Cmd-Enter</kbd> 저장 · <kbd>Esc</kbd> 취소.</li>
@@ -659,7 +664,7 @@ cursor-agent --resume &lt;id&gt;</code></pre>
 
       <!-- ===================== 04 attribution ===================== -->
       <section class="part" id="attribution">
-        <div class="part-head"><span class="part-num">04</span><h2>Attribution (AI/사람 라인 추적)</h2></div>
+        <div class="part-head"><span class="part-num">04</span><h2>Attribution (AI/사람 라인 추적)</h2><span class="src-links"><a class="src-link" href="https://www.onorca.dev/docs/review/attribution" target="_blank" rel="noopener">원문</a></span></div>
         <ul class="pts">
           <li>에이전트가 수정한 라인을 추적(provenance)해 <strong>AI 작성 라인을 gutter에 은은한 마커</strong>로 표시.</li>
           <li>사람이 AI 코드 위에 편집하면 attribution이 다시 <strong>human으로 뒤집힙니다</strong>(flipping).</li>
@@ -670,7 +675,7 @@ cursor-agent --resume &lt;id&gt;</code></pre>
 
       <!-- ===================== 04 commit ===================== -->
       <section class="part" id="commit">
-        <div class="part-head"><span class="part-num">04</span><h2>커밋 &amp; 푸시</h2></div>
+        <div class="part-head"><span class="part-num">04</span><h2>커밋 &amp; 푸시</h2><span class="src-links"><a class="src-link" href="https://www.onorca.dev/docs/review/commit-push" target="_blank" rel="noopener">원문</a></span></div>
         <ul class="pts">
           <li>diff 뷰어 옆 <strong>Commit Panel</strong>에서 스테이징 → 메시지 작성 → 커밋까지 Orca를 벗어나지 않습니다. <kbd>Cmd-Enter</kbd> 로 커밋.</li>
           <li>“Generate with AI”가 staged 변경으로 커밋 메시지 초안 생성, “Fix with AI”가 실패한 pre-commit hook 수리.</li>
@@ -685,7 +690,7 @@ cursor-agent --resume &lt;id&gt;</code></pre>
 
       <!-- ===================== 04 github ===================== -->
       <section class="part" id="github">
-        <div class="part-head"><span class="part-num">04</span><h2>GitHub · 이슈 · Actions</h2></div>
+        <div class="part-head"><span class="part-num">04</span><h2>GitHub · 이슈 · Actions</h2><span class="src-links"><a class="src-link" href="https://www.onorca.dev/docs/review/github" target="_blank" rel="noopener">GitHub</a><a class="src-link" href="https://www.onorca.dev/docs/review/linear" target="_blank" rel="noopener">Linear</a><a class="src-link" href="https://www.onorca.dev/docs/review/jira" target="_blank" rel="noopener">Jira</a></span></div>
         <ul class="pts">
           <li>worktree를 PR/MR에 연결하고 인라인 리뷰 상태를 표면화. Provider: <strong>GitHub(가장 깊은 통합)</strong> · GitLab · Bitbucket · Azure DevOps · Gitea.</li>
           <li>실패한 <strong>GitHub Actions</strong> 체크는 빨간 표시 + job 로그 인라인 확인. “Fix broken checks”로 실패 체크명을 에이전트에게 전달.</li>
@@ -704,7 +709,7 @@ cursor-agent --resume &lt;id&gt;</code></pre>
 
       <!-- ===================== 05 editing ===================== -->
       <section class="part" id="editing">
-        <div class="part-head"><span class="part-num">05</span><h2>에디팅 — 에디터 · 마크다운 · 뷰어</h2></div>
+        <div class="part-head"><span class="part-num">05</span><h2>에디팅 — 에디터 · 마크다운 · 뷰어</h2><span class="src-links"><a class="src-link" href="https://www.onorca.dev/docs/editing/monaco" target="_blank" rel="noopener">Monaco</a><a class="src-link" href="https://www.onorca.dev/docs/editing/markdown" target="_blank" rel="noopener">Markdown</a><a class="src-link" href="https://www.onorca.dev/docs/editing/viewers" target="_blank" rel="noopener">뷰어</a><a class="src-link" href="https://www.onorca.dev/docs/editing/file-explorer" target="_blank" rel="noopener">탐색기</a></span></div>
         <h3><span class="dot">▸</span> Monaco 에디터 &amp; 자동저장</h3>
         <ul class="pts">
           <li>VS Code의 Monaco에 Orca 커스터마이즈를 더한 에디터. 파일은 <strong>blur 시점·짧은 idle 후 자동 저장</strong>(정상 흐름엔 dirty 점 없음).</li>
@@ -730,7 +735,7 @@ cursor-agent --resume &lt;id&gt;</code></pre>
 
       <!-- ===================== 06 browser ===================== -->
       <section class="part" id="browser">
-        <div class="part-head"><span class="part-num">06</span><h2>브라우저 &amp; 디자인 모드</h2></div>
+        <div class="part-head"><span class="part-num">06</span><h2>브라우저 &amp; 디자인 모드</h2><span class="src-links"><a class="src-link" href="https://www.onorca.dev/docs/browser/overview" target="_blank" rel="noopener">브라우저</a><a class="src-link" href="https://www.onorca.dev/docs/browser/design-mode" target="_blank" rel="noopener">Design Mode</a><a class="src-link" href="https://www.onorca.dev/docs/browser/profiles" target="_blank" rel="noopener">프로필</a></span></div>
         <ul class="pts">
           <li><strong>worktree마다 자체 브라우저</strong>: 주소창·히스토리·devtools를 갖춘 실제 Chromium 창이 페인에 임베드. 탭은 worktree 단위로 격리됩니다.</li>
           <li>Chrome/Edge에서 쿠키를 import해 <strong>로그인 세션 유지</strong>. CDP 디바이스 에뮬레이션으로 커스텀 viewport 반응형 테스트.</li>
@@ -763,7 +768,7 @@ cursor-agent --resume &lt;id&gt;</code></pre>
 
       <!-- ===================== 07 terminal ===================== -->
       <section class="part" id="terminal">
-        <div class="part-head"><span class="part-num">07</span><h2>터미널</h2></div>
+        <div class="part-head"><span class="part-num">07</span><h2>터미널</h2><span class="src-links"><a class="src-link" href="https://www.onorca.dev/docs/terminal" target="_blank" rel="noopener">원문</a></span></div>
         <ul class="pts">
           <li>VS Code와 동일한 <strong>xterm.js</strong> 기반에 AI-에이전트 워크플로 강화. split 레이아웃 안의 탭으로 여러 셸을 나란히.</li>
           <li>색상 테마 커스터마이즈(<strong>Ghostty·Warp 테마 import</strong>). Windows는 PowerShell/CMD/WSL 선택.</li>
@@ -786,7 +791,7 @@ cursor-agent --resume &lt;id&gt;</code></pre>
 
       <!-- ===================== 07 ssh ===================== -->
       <section class="part" id="ssh">
-        <div class="part-head"><span class="part-num">07</span><h2>SSH · 원격 Orca 서버</h2></div>
+        <div class="part-head"><span class="part-num">07</span><h2>SSH · 원격 Orca 서버</h2><span class="src-links"><a class="src-link" href="https://www.onorca.dev/docs/ssh" target="_blank" rel="noopener">SSH</a><a class="src-link" href="https://www.onorca.dev/docs/remote-servers" target="_blank" rel="noopener">원격 서버</a></span></div>
         <h3><span class="dot">▸</span> SSH Worktrees</h3>
         <ul class="pts">
           <li>에이전트는 <strong>SSH로 원격 머신에서 실행</strong>되고, editor·diff·browser는 로컬에 유지. git worktree는 원격에 생성되고 파일 이벤트가 동기화됩니다.</li>
@@ -812,7 +817,7 @@ cursor-agent --resume &lt;id&gt;</code></pre>
 
       <!-- ===================== 08 cli ===================== -->
       <section class="part" id="cli">
-        <div class="part-head"><span class="part-num">08</span><h2>Orca CLI</h2></div>
+        <div class="part-head"><span class="part-num">08</span><h2>Orca CLI</h2><span class="src-links"><a class="src-link" href="https://www.onorca.dev/docs/cli/overview" target="_blank" rel="noopener">CLI 개요</a><a class="src-link" href="https://www.onorca.dev/docs/cli/reference" target="_blank" rel="noopener">레퍼런스</a></span></div>
         <p>터미널에서 Orca 에디터를 <strong>스크립트로 제어</strong>: worktree 관리, 에이전트 터미널 제어, 파일/브라우저 자동화, 스킬 설치. 거의 모든 명령이 <code>--json</code> 을 지원해 파싱하기 좋습니다.</p>
         <p><strong>Selector 개념</strong>이 핵심 — 리소스를 <code>active</code> · <code>id:</code> · <code>path:</code> · <code>branch</code> · <code>issue</code> 로 참조합니다.</p>
         <pre><code><span class="c"># 설치 확인 &amp; 런타임 상태</span>
@@ -838,7 +843,7 @@ command -v orca
 
       <!-- ===================== 08 orchestration ===================== -->
       <section class="part" id="orchestration">
-        <div class="part-head"><span class="part-num">08</span><h2>멀티 에이전트 오케스트레이션</h2></div>
+        <div class="part-head"><span class="part-num">08</span><h2>멀티 에이전트 오케스트레이션</h2><span class="src-links"><a class="src-link" href="https://www.onorca.dev/docs/cli/orchestration" target="_blank" rel="noopener">원문</a></span></div>
         <p>여러 에이전트가 <strong>공유 inbox · 태스크 레코드 · dispatch · 완료 메시지 · decision gate</strong>로 협업하게 조율하는 계층입니다.</p>
         <dl class="kv">
           <dt>Message</dt><dd>터미널 간 영속 메모. type: status·dispatch·worker_done·escalation·decision_gate·heartbeat.</dd>
@@ -859,7 +864,7 @@ command -v orca
 
       <!-- ===================== 08 automations ===================== -->
       <section class="part" id="automations">
-        <div class="part-head"><span class="part-num">08</span><h2>예약 자동화 (Automations)</h2></div>
+        <div class="part-head"><span class="part-num">08</span><h2>예약 자동화 (Automations)</h2><span class="src-links"><a class="src-link" href="https://www.onorca.dev/docs/cli/automations" target="_blank" rel="noopener">원문</a></span></div>
         <ul class="pts">
           <li>프롬프트를 <strong>스케줄에 맞춰 실행</strong>해 triage·review·유지보수 같은 반복 작업을 worktree를 열지 않고 처리.</li>
           <li>스케줄: 프리셋(hourly·daily·weekdays·weekly) + <strong>cron/RRULE</strong> 표현식. 대상은 repo 또는 기존 worktree(<code>--workspace active</code>).</li>
@@ -873,7 +878,7 @@ command -v orca
 
       <!-- ===================== 08 computer use ===================== -->
       <section class="part" id="computer-use">
-        <div class="part-head"><span class="part-num">08</span><h2>Computer Use (데스크톱 앱 제어)</h2></div>
+        <div class="part-head"><span class="part-num">08</span><h2>Computer Use (데스크톱 앱 제어)</h2><span class="src-links"><a class="src-link" href="https://www.onorca.dev/docs/cli/computer-use" target="_blank" rel="noopener">원문</a></span></div>
         <ul class="pts">
           <li><strong>접근성 트리 · 스크린샷 · UI 액션</strong>으로 네이티브 데스크톱 앱을 에이전트가 제어. “snapshot → act → snapshot” 루프.</li>
           <li>최초 사용 시 <code>permissions</code>·<code>capabilities</code> 점검. 지원 액션: click·set-value·type-text·press-key·hotkey·scroll.</li>
@@ -889,7 +894,7 @@ printf <span class="s">'%s'</span> <span class="s">"$TEXT"</span> | <span class=
 
       <!-- ===================== 08 skills ===================== -->
       <section class="part" id="skills">
-        <div class="part-head"><span class="part-num">08</span><h2>Skills Registry &amp; MCP</h2></div>
+        <div class="part-head"><span class="part-num">08</span><h2>Skills Registry &amp; MCP</h2><span class="src-links"><a class="src-link" href="https://www.onorca.dev/docs/cli/skills" target="_blank" rel="noopener">원문</a></span></div>
         <ul class="pts">
           <li><strong>Orca Skills</strong>: 에이전트가 자기 skill 디렉토리에 설치해 CLI 능력을 확장하는 버전 관리 패키지. <code>skills/&lt;name&gt;/SKILL.md</code> 를 가진 repo면 커스텀 설치 가능.</li>
           <li><strong>MCP 서버</strong>: Model Context Protocol 엔드포인트로 외부 도구를 호환 에이전트에 노출. 등록: <em>Settings → Integrations → MCP</em>.</li>
@@ -901,7 +906,7 @@ printf <span class="s">'%s'</span> <span class="s">"$TEXT"</span> | <span class=
 
       <!-- ===================== 09 mobile / notif ===================== -->
       <section class="part" id="mobile-notif">
-        <div class="part-head"><span class="part-num">09</span><h2>모바일 · 알림 · 피드</h2></div>
+        <div class="part-head"><span class="part-num">09</span><h2>모바일 · 알림 · 피드</h2><span class="src-links"><a class="src-link" href="https://www.onorca.dev/docs/mobile" target="_blank" rel="noopener">모바일</a><a class="src-link" href="https://www.onorca.dev/docs/notifications" target="_blank" rel="noopener">알림</a><a class="src-link" href="https://www.onorca.dev/docs/activity" target="_blank" rel="noopener">피드</a></span></div>
         <h3><span class="dot">▸</span> Mobile Companion <em style="color:var(--secondary);font-weight:600;font-style:normal">(Beta)</em></h3>
         <ul class="pts">
           <li>데스크톱 Orca와 페어링해 에이전트를 <strong>원격 모니터·제어</strong>하는 iOS/Android 앱. 로컬·원격 호스트의 모든 worktree를 상태(working/done/waiting)와 함께 조회.</li>
@@ -922,7 +927,7 @@ printf <span class="s">'%s'</span> <span class="s">"$TEXT"</span> | <span class=
 
       <!-- ===================== 10 recipes ===================== -->
       <section class="part" id="recipes">
-        <div class="part-head"><span class="part-num">10</span><h2>실전 워크플로우 5선</h2></div>
+        <div class="part-head"><span class="part-num">10</span><h2>실전 워크플로우 5선</h2><span class="src-links"><a class="src-link" href="https://www.onorca.dev/docs/recipes/parallel-agents" target="_blank" rel="noopener">병렬 경쟁</a><a class="src-link" href="https://www.onorca.dev/docs/recipes/review-ai-diff" target="_blank" rel="noopener">diff 리뷰</a><a class="src-link" href="https://www.onorca.dev/docs/recipes/jump-worktrees" target="_blank" rel="noopener">worktree 점프</a><a class="src-link" href="https://www.onorca.dev/docs/recipes/design-mode-fix" target="_blank" rel="noopener">Design Mode</a><a class="src-link" href="https://www.onorca.dev/docs/recipes/remote-worktrees" target="_blank" rel="noopener">원격 SSH</a></span></div>
 
         <h3><span class="dot">▸</span> ① 같은 작업에 에이전트 3개 경쟁시키기</h3>
         <ul class="pts">
@@ -958,7 +963,7 @@ printf <span class="s">'%s'</span> <span class="s">"$TEXT"</span> | <span class=
 
       <!-- ===================== 11 settings ===================== -->
       <section class="part" id="settings">
-        <div class="part-head"><span class="part-num">11</span><h2>설정 &amp; 트러블슈팅</h2></div>
+        <div class="part-head"><span class="part-num">11</span><h2>설정 &amp; 트러블슈팅</h2><span class="src-links"><a class="src-link" href="https://www.onorca.dev/docs/settings" target="_blank" rel="noopener">설정</a><a class="src-link" href="https://www.onorca.dev/docs/troubleshooting" target="_blank" rel="noopener">트러블슈팅</a></span></div>
         <p>모든 설정은 <kbd>Cmd-,</kbd> 로 열고 검색합니다.</p>
         <dl class="kv">
           <dt>General / Appearance</dt><dd>CLI 등록, 업데이트, UI zoom, worktree 이름 기본값 · 테마·강조색·밀도, UI/에디터 폰트, minimap, 앱 아이콘, 언어.</dd>
